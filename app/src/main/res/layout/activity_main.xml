@@ -31,6 +31,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <ImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            android:background="@drawable/serach_shape"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_search"
+            android:text="@string/search"
+            app:layout_constraintBottom_toBottomOf="@+id/etSearchCity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/etSearchCity" />
+
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvLocationNotFound"
             android:layout_width="wrap_content"
@@ -62,6 +75,7 @@
             android:layout_marginTop="@dimen/_20sdp"
             android:text="@string/city_name"
             android:textColor="@android:color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mapView" />
 
@@ -72,6 +86,7 @@
             android:layout_marginTop="@dimen/_16sdp"
             android:text="@string/temperature"
             android:textColor="@android:color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tvCityName"
             app:layout_constraintTop_toBottomOf="@+id/tvCityName" />
 
@@ -82,21 +97,31 @@
             android:layout_marginTop="@dimen/_16sdp"
             android:text="@string/weather_description"
             android:textColor="@android:color/black"
+            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tvTemperature"
             app:layout_constraintTop_toBottomOf="@+id/tvTemperature" />
 
-        <ImageView
-            android:id="@+id/ivSearch"
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvFeelLike"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_16sdp"
-            android:background="@drawable/serach_shape"
-            android:padding="@dimen/_8sdp"
-            android:src="@drawable/ic_search"
-            android:text="@string/search"
-            app:layout_constraintBottom_toBottomOf="@+id/etSearchCity"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/etSearchCity" />
+            android:layout_marginTop="@dimen/_16sdp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/tvWeatherDescription"
+            tools:text="Feel Like" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/tvTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/tvFeelLike"
+            tools:text="Country Name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

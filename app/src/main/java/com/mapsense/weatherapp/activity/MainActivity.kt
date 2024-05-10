@@ -84,16 +84,17 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     private fun errorHandling() {
         viewModel.observerNetworkError().observe(this) { error ->
             showError(error)
-            binding?.tvLocationNotFound?.visibility = View.VISIBLE
         }
     }
 
     private fun fetchWeatherData() {
         binding?.apply {
             viewModel.observerWeatherData().observe(this@MainActivity) {
-                tvCityName.text = it.name
-                tvTemperature.text = "${it.main.temp}°C"
-                tvWeatherDescription.text = it.weather[0].description
+                tvCityName.text = String.format("Current Address: " + it.name)
+                tvTemperature.text = String.format("Temperature: " + "${it.main.temp}°C")
+                tvWeatherDescription.text = String.format("Description: " + it.weather[0].description)
+                tvFeelLike.text = String.format("feels like: " + it.main.feels_like.toString())
+                tvCountry.text = String.format("Country Name: " + it.sys.country)
                 addMarker(LatLng(it.coord.lat, it.coord.lon), it.name)
             }
         }
@@ -104,6 +105,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
             ivSearch.setOnClickListener {
                 tvLocationNotFound.visibility = View.GONE
                 if (TextUtils.isEmpty(etSearchCity.text.toString())) {
+                    binding?.tvLocationNotFound?.visibility = View.VISIBLE
                     showError("Please Enter Location")
                 } else {
                     viewModel.getWeatherDataByAddress(etSearchCity.text.toString())
