@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeatherAPP</string>
+    <string name="app_name">Weather APP</string>
     <string name="map_api_key">AIzaSyDJpOybIpA06gvRqF3hnB28VLbhVBvzWVA</string>
     <string name="gurugram">Gurugram</string>
     <string name="city_name">City Name</string>
