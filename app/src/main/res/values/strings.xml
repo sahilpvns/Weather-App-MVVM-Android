@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">WeatherAPP</string>
     <string name="map_api_key">AIzaSyDJpOybIpA06gvRqF3hnB28VLbhVBvzWVA</string>
-    <string name="api_key">5f9c9614cd931617e99eb08c2e6852b7</string>
     <string name="gurugram">Gurugram</string>
     <string name="city_name">City Name</string>
     <string name="temperature">Temperature</string>

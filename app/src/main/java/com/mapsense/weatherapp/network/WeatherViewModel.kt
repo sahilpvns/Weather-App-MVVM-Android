@@ -1,38 +1,18 @@
 package com.mapsense.weatherapp.network
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.mapsense.weatherapp.network.weatherdataclass.WeatherDataClass
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.mapsense.weatherapp.network.datasource.WeatherRepo
 
 class WeatherViewModel : ViewModel() {
 
-    private val repository = WeatherRepository()
+    val weatherRepo by lazy { WeatherRepo() }
 
-    private val _weatherData = MutableLiveData<WeatherDataClass>()
-    val weatherData: LiveData<WeatherDataClass> = _weatherData
+    fun getWeatherDataByAddress(address: String?) = weatherRepo.getWeatherDataByAddress(address)
+    fun getWeatherDataLatLong(lat: Double?, long: Double?) =
+        weatherRepo.getWeatherDataLatLong(lat, long)
 
-    private val _error = MutableLiveData<String>()
-    val error: LiveData<String> = _error
-
-    fun getWeather(location: String, apiKey: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val data = repository.getWeather(location, apiKey)
-                withContext(Dispatchers.Main) {
-                    _weatherData.value = data
-                }
-            } catch (e: Exception) {
-                withContext(Dispatchers.Main) {
-                    _error.value = e.message
-                }
-            }
-        }
-    }
+    fun observerWeatherData() = weatherRepo.observerWeatherData()
+    fun observerNetworkError() = weatherRepo.observerNetworkError()
 
 
 }
