@@ -1,6 +1,6 @@
 package com.mapsense.weatherapp.network
 
-import com.mapsense.weatherapp.network.weatherdataclass.WeatherDataClass
+import com.mapsense.weatherapp.weatherdataclass.WeatherDataClass
 import retrofit2.http.GET
 import retrofit2.http.Query
 

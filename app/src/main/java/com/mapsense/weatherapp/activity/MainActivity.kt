@@ -1,4 +1,4 @@
-package com.mapsense.weatherapp
+package com.mapsense.weatherapp.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
@@ -16,6 +16,7 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.mapsense.weatherapp.R
 import com.mapsense.weatherapp.databinding.ActivityMainBinding
 import com.mapsense.weatherapp.network.WeatherViewModel
 

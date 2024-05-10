@@ -13,7 +13,7 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:background="@android:color/white"
-        tools:context=".MainActivity">
+        tools:context=".activity.MainActivity">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etSearchCity"

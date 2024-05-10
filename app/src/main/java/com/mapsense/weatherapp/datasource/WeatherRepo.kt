@@ -1,8 +1,8 @@
-package com.mapsense.weatherapp.network.datasource
+package com.mapsense.weatherapp.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.mapsense.weatherapp.network.weatherdataclass.WeatherDataClass
+import com.mapsense.weatherapp.weatherdataclass.WeatherDataClass
 
 class WeatherRepo : WeatherRepoInterface {
     private val weatherDataSource by lazy { WeatherDataSource() }

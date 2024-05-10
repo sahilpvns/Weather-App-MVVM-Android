@@ -1,4 +1,4 @@
-package com.mapsense.weatherapp.network.weatherdataclass
+package com.mapsense.weatherapp.weatherdataclass
 
 data class Main(
     val feels_like: Double,

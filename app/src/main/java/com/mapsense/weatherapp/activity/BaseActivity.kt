@@ -1,4 +1,4 @@
-package com.mapsense.weatherapp
+package com.mapsense.weatherapp.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
@@ -7,8 +7,6 @@ import androidx.core.app.ActivityCompat
 import com.google.android.material.snackbar.Snackbar
 
 open class BaseActivity : AppCompatActivity() {
-
-
     fun showError(message: String?, duration: Int = Snackbar.LENGTH_SHORT) {
         Snackbar.make(findViewById(android.R.id.content), message?:"Something went wrong", duration).show()
     }

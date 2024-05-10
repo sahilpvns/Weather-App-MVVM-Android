@@ -22,7 +22,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_api_key" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

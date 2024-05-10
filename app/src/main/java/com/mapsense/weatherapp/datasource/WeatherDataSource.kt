@@ -1,9 +1,9 @@
-package com.mapsense.weatherapp.network.datasource
+package com.mapsense.weatherapp.datasource
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.mapsense.weatherapp.network.AppNetworkClient
-import com.mapsense.weatherapp.network.weatherdataclass.WeatherDataClass
+import com.mapsense.weatherapp.weatherdataclass.WeatherDataClass
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
