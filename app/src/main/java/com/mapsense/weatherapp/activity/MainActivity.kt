@@ -69,7 +69,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         MaterialAlertDialogBuilder(this)
             .setMessage("Require Location permission in device")
             .setPositiveButton("Continue") { dialog, which ->
-                notLocationPermissionHave()
+                openLocationPermission()
             }
             .setNegativeButton("Not now") { dialog, which ->
             }

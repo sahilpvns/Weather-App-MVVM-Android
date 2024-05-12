@@ -23,7 +23,7 @@ open class BaseActivity : AppCompatActivity() {
        ) == PackageManager.PERMISSION_GRANTED
     }
 
-    fun notLocationPermissionHave() {
+    fun openLocationPermission() {
         startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS).apply {
             data = Uri.fromParts("package", packageName, null)
         })
