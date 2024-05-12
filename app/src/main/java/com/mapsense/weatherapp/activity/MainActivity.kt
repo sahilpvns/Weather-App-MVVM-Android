@@ -2,8 +2,6 @@ package com.mapsense.weatherapp.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.content.Intent
-import android.location.Location
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -17,6 +15,7 @@ import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mapsense.weatherapp.R
 import com.mapsense.weatherapp.databinding.ActivityMainBinding
 import com.mapsense.weatherapp.network.WeatherViewModel
@@ -46,7 +45,6 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     private fun retryLocation() {
         binding?.ivRetry?.setOnClickListener {
             fetchCurrentLocation()
-            showError(" Current Location updated")
         }
     }
 
@@ -60,10 +58,22 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         if (isLocationPermissionHave()) {
             getLastLocation()
         } else {
-            requestPermissions(
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION), REQUEST_LOCATION_PERMISSION
-            )
+            requestPermissions(arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION), REQUEST_LOCATION_PERMISSION)
+            alertTurnOnLocationPermission()
         }
+    }
+
+    private fun alertTurnOnLocationPermission() {
+        MaterialAlertDialogBuilder(this)
+            .setMessage("Require Location permission in device")
+            .setPositiveButton("Continue") { dialog, which ->
+                notLocationPermissionHave()
+            }
+            .setNegativeButton("Not now") { dialog, which ->
+            }
+            .show()
     }
 
     @SuppressLint("MissingPermission")
@@ -73,12 +83,23 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
                 if (it != null) {
                     viewModel.getWeatherDataLatLong(it.latitude, it.longitude)
                 } else {
-                    showError("Unable to retrieve location please turn on location")
+                    alertTurnOnLocation()
                 }
             }
         } else {
             showError("having not a permission")
         }
+    }
+
+    private fun alertTurnOnLocation() {
+        MaterialAlertDialogBuilder(this)
+            .setMessage("Please turn ON Location in device")
+            .setPositiveButton("Turn on") { dialog, which ->
+                openLocationSetting()
+            }
+            .setNegativeButton("Cancel") { dialog, which ->
+            }
+            .show()
     }
 
     companion object {
