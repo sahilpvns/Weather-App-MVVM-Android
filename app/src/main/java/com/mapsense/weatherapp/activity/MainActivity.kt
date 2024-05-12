@@ -113,8 +113,10 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     }
 
     private fun errorHandling() {
-        viewModel.observerNetworkError().observe(this) { error ->
-            showError(error)
+        viewModel.observerNetworkError().observe(this) {
+            binding?.tvLocationNotFound?.text = String.format("Please Enter valid location")
+            binding?.tvLocationNotFound?.visibility = View.VISIBLE
+            showError("$it Please Enter valid location")
         }
     }
 
