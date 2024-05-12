@@ -2,6 +2,7 @@ package com.mapsense.weatherapp.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.location.Location
 import android.os.Bundle
 import android.text.TextUtils
@@ -39,7 +40,16 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         errorHandling()
         mapViewData(savedInstanceState)
         fetchCurrentLocation()
+        retryLocation()
     }
+
+    private fun retryLocation() {
+        binding?.ivRetry?.setOnClickListener {
+            fetchCurrentLocation()
+            showError(" Current Location updated")
+        }
+    }
+
 
     private fun initLocation() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
@@ -59,15 +69,15 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     private fun getLastLocation() {
         if (isLocationPermissionHave()) {
-            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-                if (location != null) {
-                    viewModel.getWeatherDataLatLong(location.latitude, location.longitude)
+            fusedLocationClient.lastLocation.addOnSuccessListener {
+                if (it != null) {
+                    viewModel.getWeatherDataLatLong(it.latitude, it.longitude)
                 } else {
                     showError("Unable to retrieve location please turn on location")
                 }
             }
         } else {
-            showError("permissison not have")
+            showError("having not a permission")
         }
     }
 
