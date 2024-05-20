@@ -67,62 +67,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvLocationNotFound" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvCityName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="@string/city_name"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mapView" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvTemperature"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:text="@string/temperature"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvCityName"
-            app:layout_constraintTop_toBottomOf="@+id/tvCityName" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvWeatherDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:text="@string/weather_description"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvTemperature"
-            app:layout_constraintTop_toBottomOf="@+id/tvTemperature" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvFeelLike"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvTemperature"
-            app:layout_constraintTop_toBottomOf="@+id/tvWeatherDescription"
-            tools:text="Feel Like" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/tvCountry"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_16sdp"
-            android:textColor="@android:color/black"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@+id/tvTemperature"
-            app:layout_constraintTop_toBottomOf="@+id/tvFeelLike"
-            tools:text="Country Name" />
-
         <ImageView
             android:id="@+id/ivRetry"
             android:layout_width="wrap_content"
@@ -135,6 +79,77 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mapView"
             app:srcCompat="@drawable/current_location" />
+
+        <ImageView
+            android:id="@+id/weather_icon"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_margin="@dimen/_20sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mapView"
+            app:srcCompat="@drawable/wheater_icon" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCityName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="@dimen/_14sdp"
+            app:layout_constraintStart_toEndOf="@+id/weather_icon"
+            app:layout_constraintTop_toTopOf="@+id/weather_icon"
+            tools:text="City Name" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvTemperature"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:fontFamily="@font/poppins"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintStart_toStartOf="@+id/tvCityName"
+            app:layout_constraintTop_toBottomOf="@id/tvCityName"
+            tools:text="25°C" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvWeatherDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="@+id/tvTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/tvTemperature"
+            tools:text="Clear Sky" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvCountry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="@+id/tvTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/tvWeatherDescription"
+            tools:text="Country" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvAdditional_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="@+id/weather_icon"
+            app:layout_constraintTop_toBottomOf="@id/tvCountry"
+            tools:text="Humidity: 50% | Wind: 10 km/h" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvWinSpeed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:layout_marginTop="@dimen/_4sdp"
+            app:layout_constraintStart_toStartOf="@+id/weather_icon"
+            app:layout_constraintTop_toBottomOf="@id/tvAdditional_info"
+            tools:text="Speed: 50% | deg: 10 km/h" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

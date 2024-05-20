@@ -123,11 +123,12 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     private fun fetchWeatherData() {
         binding?.apply {
             viewModel.observerWeatherData().observe(this@MainActivity) {
-                tvCityName.text = String.format("Current Address: " + it.name)
-                tvTemperature.text = String.format("Temperature: " + "${it.main.temp}°C")
-                tvWeatherDescription.text = String.format("Description: " + it.weather[0].description)
-                tvFeelLike.text = String.format("feels like: " + it.main.feels_like.toString())
-                tvCountry.text = String.format("Country Name: " + it.sys.country)
+                tvCityName.text = it.name
+                tvTemperature.text = "${it.main.temp}°C"
+                tvWeatherDescription.text = it.weather[0].description
+                tvAdditionalInfo.text = String.format("Temp max: ${it.main.temp_max}  |  Temp min: ${it.main.temp_min}")
+                tvWinSpeed.text = String.format("Win Speed: ${it.wind.speed}  |  deg: ${it.wind.deg}")
+                tvCountry.text = it.sys.country
                 addMarker(LatLng(it.coord.lat, it.coord.lon), it.name)
             }
         }
