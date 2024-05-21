@@ -8,8 +8,7 @@ interface WeatherService {
     @GET("data/2.5/weather")
     suspend fun getWeatherByName(
         @Query("appid") apiKey: String,
-        @Query("q") location: String?
-    ): WeatherDataClass
+        @Query("q") location: String?): WeatherDataClass
 
 
     @GET("/data/2.5/weather")
