@@ -2,11 +2,9 @@ package com.mapsense.weatherapp.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
-import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -122,7 +120,6 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun fetchWeatherData() {
         binding?.apply {
             viewModel.observerWeatherData().observe(this@MainActivity) {

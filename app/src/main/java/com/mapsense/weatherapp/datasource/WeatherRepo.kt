@@ -1,7 +1,6 @@
 package com.mapsense.weatherapp.datasource
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.mapsense.weatherapp.weatherdataclass.WeatherDataClass
 
 class WeatherRepo : WeatherRepoInterface {
