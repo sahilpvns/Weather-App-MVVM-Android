@@ -2,9 +2,11 @@ package com.mapsense.weatherapp.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -120,13 +122,19 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     private fun fetchWeatherData() {
         binding?.apply {
             viewModel.observerWeatherData().observe(this@MainActivity) {
+
+                val temp = it.main.temp - 273.25
+                val temp_max = it.main.temp_max - 273.25
+                val temp_min = it.main.temp_min - 273.25
+
                 tvCityName.text = it.name
-                tvTemperature.text = "${it.main.temp}°C"
+                tvTemperature.text = temp.toInt().toString().plus(".C")
                 tvWeatherDescription.text = it.weather[0].description
-                tvAdditionalInfo.text = String.format("Temp max: ${it.main.temp_max}  |  Temp min: ${it.main.temp_min}")
+                tvAdditionalInfo.text = String.format("Temp max: ${temp_max.toInt()}   |  Temp min: ${temp_min.toInt()} ")
                 tvWinSpeed.text = String.format("Win Speed: ${it.wind.speed}  |  deg: ${it.wind.deg}")
                 tvCountry.text = it.sys.country
                 addMarker(LatLng(it.coord.lat, it.coord.lon), it.name)
