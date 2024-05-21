@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -40,6 +41,11 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         mapViewData(savedInstanceState)
         fetchCurrentLocation()
         retryLocation()
+        darkMode()
+    }
+
+    private fun darkMode() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     private fun retryLocation() {
