@@ -104,7 +104,6 @@
             android:id="@+id/tvTemperature"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
             android:fontFamily="@font/poppins"
             android:textSize="@dimen/_12sdp"
             app:layout_constraintStart_toStartOf="@+id/tvCityName"
@@ -112,13 +111,21 @@
             tools:text="25°C" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvfeellike"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            app:layout_constraintStart_toStartOf="@+id/tvCityName"
+            app:layout_constraintTop_toBottomOf="@id/tvTemperature"
+            tools:text="feel like" />
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tvWeatherDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
             android:fontFamily="@font/poppins"
             app:layout_constraintStart_toStartOf="@+id/tvTemperature"
-            app:layout_constraintTop_toBottomOf="@+id/tvTemperature"
+            app:layout_constraintTop_toBottomOf="@+id/tvfeellike"
             tools:text="Clear Sky" />
 
         <com.google.android.material.textview.MaterialTextView

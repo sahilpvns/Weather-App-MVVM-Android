@@ -131,13 +131,15 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
             viewModel.observerWeatherData().observe(this@MainActivity) {
 
                 val temp = it.main.temp - 273.25
-                val temp_max = it.main.temp_max - 273.25
-                val temp_min = it.main.temp_min - 273.25
+                val feelLike = it.main.feels_like - 273.25
+                val tempMax = it.main.temp_max - 273.25
+                val tempMin = it.main.temp_min - 273.25
 
                 tvCityName.text = it.name
                 tvTemperature.text = temp.toInt().toString().plus(".C")
+                tvfeellike.text = String.format("feel like ${feelLike.toInt()}.C")
                 tvWeatherDescription.text = it.weather[0].description
-                tvAdditionalInfo.text = String.format("Temp max: ${temp_max.toInt()}   |  Temp min: ${temp_min.toInt()} ")
+                tvAdditionalInfo.text = String.format("Temp max: ${tempMax.toInt()}   |  Temp min: ${tempMin.toInt()} ")
                 tvWinSpeed.text = String.format("Win Speed: ${it.wind.speed}  |  deg: ${it.wind.deg}")
                 tvCountry.text = it.sys.country
                 addMarker(LatLng(it.coord.lat, it.coord.lon), it.name)
