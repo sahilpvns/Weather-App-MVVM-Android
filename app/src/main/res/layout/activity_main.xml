@@ -158,6 +158,16 @@
             app:layout_constraintTop_toBottomOf="@id/tvAdditional_info"
             tools:text="Speed: 50% | deg: 10 km/h" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_35sdp"
+            tools:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/weather_icon"
+            app:layout_constraintStart_toEndOf="@+id/weather_icon"
+            app:layout_constraintTop_toTopOf="@+id/weather_icon" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

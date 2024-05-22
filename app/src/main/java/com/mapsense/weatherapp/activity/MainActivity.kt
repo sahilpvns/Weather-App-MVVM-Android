@@ -129,12 +129,11 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     private fun fetchWeatherData() {
         binding?.apply {
             viewModel.observerWeatherData().observe(this@MainActivity) {
-
+                progressBar.visibility = View.GONE
                 val temp = it.main.temp - 273.25
                 val feelLike = it.main.feels_like - 273.25
                 val tempMax = it.main.temp_max - 273.25
                 val tempMin = it.main.temp_min - 273.25
-
                 tvCityName.text = it.name
                 tvTemperature.text = temp.toInt().toString().plus(".C")
                 tvfeellike.text = String.format("feel like ${feelLike.toInt()}.C")
