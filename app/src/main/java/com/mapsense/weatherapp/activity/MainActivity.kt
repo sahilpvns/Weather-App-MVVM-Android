@@ -2,9 +2,11 @@ package com.mapsense.weatherapp.activity
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -20,6 +22,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mapsense.weatherapp.R
 import com.mapsense.weatherapp.databinding.ActivityMainBinding
 import com.mapsense.weatherapp.network.WeatherViewModel
+
 
 class MainActivity : BaseActivity(), OnMapReadyCallback {
 
@@ -149,6 +152,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     private fun initListener() {
         binding?.apply {
             ivSearch.setOnClickListener {
+                hideSoftKeyboard()
                 tvLocationNotFound.visibility = View.GONE
                 if (TextUtils.isEmpty(etSearchCity.text.toString())) {
                     binding?.tvLocationNotFound?.visibility = View.VISIBLE
@@ -160,6 +164,12 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
             }
         }
 
+    }
+    private fun hideSoftKeyboard() {
+        this.binding?.etSearchCity.let { view ->
+            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(view?.windowToken, 0)
+        }
     }
 
     private fun initViewModel() {
